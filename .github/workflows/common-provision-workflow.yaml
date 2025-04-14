@@ -1,4 +1,4 @@
-name: common-provision-workflow-v2
+name: common-provision-workflow
 run-name: (${{ github.actor }}${{ format('{0}{1}', inputs.remote_source && '-' || '', inputs.remote_source && inputs.remote_source || '' ) }}-${{ inputs.environment }}-${{ inputs.mode }}-${{ inputs.tenant }}-${{ inputs.cluster_index }}) Base Infrastructure Provision via Terraform
 on:
   workflow_dispatch:

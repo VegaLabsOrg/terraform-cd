@@ -11,8 +11,8 @@ module "servicebus" {
   rg_name             = data.azurerm_resource_group.rg.name
   sku                 = "Standard"
 
-  queues              = var.queues
-  topics              = var.topics
+  queues = var.queues
+  topics = var.topics
 
   subscriptions = [
     {

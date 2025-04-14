@@ -75,6 +75,10 @@ jobs:
 
 
           echo "${delimiter}" >> "${GITHUB_OUTPUT}"
+
+      - name: "Show terraform variables"
+        run: |
+          echo "tfstate_storage_account_name: ${{ vars.TF_STATE_SA }}"
     
 
   # base-infrastructure:
@@ -86,7 +90,7 @@ jobs:
   #     mode: ${{ needs.setup-base-infrastructure.outputs.mode }}
   #     vars-file: ${{ needs.setup-base-infrastructure.outputs.vars-file }}
   #     tf-state-name: ${{ needs.setup-base-infrastructure.outputs.tf-state-name }}
-  #     #tf-state-name: "terraform.tfstate"
+  #     #tf-state-name: "terraform.tfstate" 
   #     environment: ${{ needs.setup-base-infrastructure.outputs.environment }}
   #     publish-plan-on-pr: ${{ github.event_name == 'pull_request' }}
   #   secrets: inherit

@@ -4,14 +4,14 @@ data "azurerm_resource_group" "rg" {
 
 
 module "servicebus" {
-  source = "../../modules/servicebus"
+  source   = "../../modules/servicebus"
   asb_name = local.asb_name
   location = var.location
-  rg_name = data.azurerm_resource_group.rg.name
-  sku = var.sku
+  rg_name  = data.azurerm_resource_group.rg.name
+  sku      = var.sku
 
-  queues              = var.queues
-  topics              = var.topics
+  queues = var.queues
+  topics = var.topics
 
   subscriptions = [
     {

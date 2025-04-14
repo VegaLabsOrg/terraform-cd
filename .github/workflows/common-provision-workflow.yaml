@@ -43,10 +43,9 @@ jobs:
       tf-state-name: ${{ format('{0}-common-infrastructure.tfstate', vars.ENV_PREFIX) }}
       mode:  ${{ inputs.mode }}
       vars-file: ${{ steps.vars.outputs.vars_file }}
-  #   steps:
-
-  #     - name: "Checkout Repository"
-  #       uses: actions/checkout@v4
+    steps:
+      - name: "Checkout Repository"
+        uses: actions/checkout@v4
 
   #     - name: "SetUp Base Infrastructure Terraform Variables"
   #       working-directory: ${{ env.WORKING_DIRECTORY }}

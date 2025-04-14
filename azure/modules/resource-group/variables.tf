@@ -6,6 +6,5 @@ variable "location" {
 }
 variable "tags" {
   type        = map(string)
-  default = {}
   description = "This fake company required tags to deploy Azure resources"
 }

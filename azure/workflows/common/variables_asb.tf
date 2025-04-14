@@ -1,8 +1,8 @@
-variable "rg_name" {
-  type        = string
-  description = "Name of the resource group to deploy resources into"
-  default     = "rg-ede-labenv"
-}
+# variable "rg_name" {
+#   type        = string
+#   description = "Name of the resource group to deploy resources into"
+#   default     = "rg-ede-labenv"
+# }
 
 
 variable "name" {

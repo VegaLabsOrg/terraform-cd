@@ -1,4 +1,4 @@
-variable "azure_subscription_id_global" {}
+#variable "azure_subscription_id_global" {}
 
 variable "location" {
   default     = "centralus"

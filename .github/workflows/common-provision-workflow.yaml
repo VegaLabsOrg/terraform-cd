@@ -78,7 +78,7 @@ jobs:
 
       - name: "Show terraform variables"
         run: |
-          echo "tfstate_storage_account_name: \033[0;32m${{ vars.TF_STATE_SA }}\033[0m"
+          echo "tfstate_storage_account_name: \033[0;32m ${{ vars.TF_STATE_SA }} \033[0m"
     
 
   # base-infrastructure:

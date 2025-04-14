@@ -36,8 +36,8 @@ provider "azurerm" {
       prevent_deletion_if_contains_resources = false
     }
   }
-  subscription_id = var.azure_subscription_id_global
-}
+  subscription_id = var.subscription_id
+  }
 
 provider "kubernetes" {
   host                   = module.k8s.aks_host

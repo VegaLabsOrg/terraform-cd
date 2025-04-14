@@ -1,5 +1,5 @@
 resource "azurerm_servicebus_namespace" "sbn" {
-  name                = var.name
+  name                = var.asb_name
   location            = var.location
   resource_group_name = var.rg_name
   sku                 = var.sku

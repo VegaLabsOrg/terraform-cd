@@ -80,7 +80,6 @@ jobs:
           env_prefix = "${{ vars.ENV_PREFIX }}"
           user_name = "${{ vars.USER_NAME }}"
           subscription_id = "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
-          azure_subscription_id_global = "${{ secrets.AZURE_SUBSCRIPTION_ID_GLOBAL }}"
           EOF
 
           echo "${{ inputs.vars-file }}" > vars-file.auto.tfvars
@@ -126,7 +125,7 @@ jobs:
           export exitcode=0
           if [ ${{ inputs.mode }} == 'apply' ] || [ ${{ inputs.mode }} == 'plan' ]; then
             terraform plan \
-              -var="azure_subscription_id_global=${{ secrets.AZURE_SUBSCRIPTION_ID }}" \
+              -var="subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" \
               -lock-timeout=${{ env.TERRAFORM_LOCK_TIMEOUT }} \
               -input=false \
               -no-color \
@@ -134,7 +133,7 @@ jobs:
               -out=tfplan | tee terraform-plan.txt
           else
             terraform plan \
-              -var="azure_subscription_id_global=${{ secrets.AZURE_SUBSCRIPTION_ID }}" \
+              -var="subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" \
               -lock-timeout=${{ env.TERRAFORM_LOCK_TIMEOUT }} \
               -input=false \
               -destroy \
@@ -302,5 +301,5 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           ARM_USE_OIDC: true
-        #run: terraform -chdir=azure/workflows/base ${{ github.event.inputs.terraform_mode }} -auto-approve -var="azure_subscription_id_global=${{secrets.AZURE_SUBSCRIPTION_ID}}"
+        #run: terraform -chdir=azure/workflows/base ${{ github.event.inputs.terraform_mode }} -auto-approve -var="subscription_id=${{secrets.AZURE_SUBSCRIPTION_ID}}"
         working-directory: ${{ env.working-directory }}

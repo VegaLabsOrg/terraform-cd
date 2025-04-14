@@ -93,7 +93,7 @@ jobs:
       workflow: ${{ needs.setup-common-infrastructure.outputs.working-directory }}
       mode: ${{ needs.setup-common-infrastructure.outputs.mode }}
       vars-file: ${{ needs.setup-common-infrastructure.outputs.vars-file }}
-      tf-state-name: ${{ needs.setup-common-infrastructure.outputs.tf-state-name }}
+      tf-state-name: ${{ needs.setup-common-infrastructure.outputs.tfstate_name }}
       #tf-state-name: "terraform.tfstate" 
       environment: ${{ needs.setup-common-infrastructure.outputs.environment }}
       publish-plan-on-pr: ${{ github.event_name == 'pull_request' }}

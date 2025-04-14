@@ -79,21 +79,25 @@ jobs:
       - name: "Show terraform variables"
         run: |
           echo -e "tfstate_storage_account_name: \033[0;32m ${{ vars.TF_STATE_SA }} \033[0m"
+          echo -e "tfstate_container_name = \033[0;32m ***${{ vars.TF_STATE_CONTAINER }}*** \033[0m" 
+          echo -e "tfstate_resource_group_name = \033[0;32m ***${{ vars.TF_STATE_RG }}*** \033[0m"
+          echo -e "tfstate_name = \033[0;32m ***${{ format('{0}-common-infrastructure.tfstate', vars.ENV_PREFIX) }}*** \033[0m"
+          echo -e "tfstate_subscription_id = \033[0;32m ***${{ vars.TF_STATE_SUB }}*** \033[0m"
     
 
-  # base-infrastructure:
-  #   needs: [setup-base-infrastructure]
-  #   uses: ./.github/workflows/terraform-reusable-workflow.yaml
-  #   name: "Base Infrastructure Terraform"
-  #   with: 
-  #     workflow: ${{ needs.setup-base-infrastructure.outputs.working-directory }}
-  #     mode: ${{ needs.setup-base-infrastructure.outputs.mode }}
-  #     vars-file: ${{ needs.setup-base-infrastructure.outputs.vars-file }}
-  #     tf-state-name: ${{ needs.setup-base-infrastructure.outputs.tf-state-name }}
-  #     #tf-state-name: "terraform.tfstate" 
-  #     environment: ${{ needs.setup-base-infrastructure.outputs.environment }}
-  #     publish-plan-on-pr: ${{ github.event_name == 'pull_request' }}
-  #   secrets: inherit
+  base-infrastructure:
+    needs: [setup-common-infrastructure]
+    uses: ./.github/workflows/terraform-reusable-workflow.yaml
+    name: "Common Infrastructure Terraform"
+    with: 
+      workflow: ${{ needs.setup-common-infrastructure.outputs.working-directory }}
+      mode: ${{ needs.setup-common-infrastructure.outputs.mode }}
+      vars-file: ${{ needs.setup-common-infrastructure.outputs.vars-file }}
+      tf-state-name: ${{ needs.setup-common-infrastructure.outputs.tf-state-name }}
+      #tf-state-name: "terraform.tfstate" 
+      environment: ${{ needs.setup-common-infrastructure.outputs.environment }}
+      publish-plan-on-pr: ${{ github.event_name == 'pull_request' }}
+    secrets: inherit
 
 
 

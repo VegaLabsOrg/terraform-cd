@@ -59,7 +59,7 @@ jobs:
 
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
 
-      - name: Azure Login
+      - name: Azure Login via OIDC
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}

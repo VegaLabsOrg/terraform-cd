@@ -246,14 +246,6 @@ jobs:
      #   run: |
       #    echo "Terraform plan has been approved. Proceeding with apply."
 
-  Terraform-verification:
-    runs-on: ubuntu-latest
-    needs: [Terraform-Plan]
-    steps:
-      - name: Check exit code
-        run: echo ${{ needs.Terraform-Plan.outputs.exitcode }}
-
-
   Terraform-Apply:
     runs-on: ubuntu-latest
     needs: [Terraform-Plan]

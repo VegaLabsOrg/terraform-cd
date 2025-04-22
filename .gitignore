@@ -6,7 +6,7 @@
 *.tfstate.*
 .env
 backend.tfstate
-backend.tf
+#backend.tf
 
 # Crash log files
 crash.log
